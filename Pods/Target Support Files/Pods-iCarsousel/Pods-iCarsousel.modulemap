@@ -1,0 +1,6 @@
+framework module Pods_iCarsousel {
+  umbrella header "Pods-iCarsousel-umbrella.h"
+
+  export *
+  module * { export * }
+}
