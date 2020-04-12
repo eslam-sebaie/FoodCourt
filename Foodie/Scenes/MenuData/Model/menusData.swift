@@ -14,5 +14,4 @@ struct menuData {
     var mealName: [String]!
     var mealPrice: [String]!
 
-  
 }

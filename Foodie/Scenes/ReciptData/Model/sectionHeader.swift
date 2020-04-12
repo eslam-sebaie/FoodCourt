@@ -19,12 +19,4 @@ class sectionHeader: UICollectionReusableView {
             headerLabel.text = question
         }
     }
-    
-//    var result : String! {
-//        didSet {
-//            resultLabel.text = result
-//        }
-//    }
-//    
-    
 }

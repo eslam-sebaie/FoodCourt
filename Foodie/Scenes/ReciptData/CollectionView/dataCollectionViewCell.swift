@@ -15,7 +15,6 @@ protocol collecCellView {
 
 class dataCollectionViewCell: UICollectionViewCell {
     
-//    @IBOutlet weak var detailName: UILabel!
     @IBOutlet weak var detailName: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     var delegate: collecCellView?
@@ -23,9 +22,6 @@ class dataCollectionViewCell: UICollectionViewCell {
     var tagButton: Int!
     var select:IndexPath!
    
-    
-
-    
     override var isSelected: Bool {
          didSet{
             if self.isSelected {
@@ -37,15 +33,7 @@ class dataCollectionViewCell: UICollectionViewCell {
          }
      }
     
-//    func setData(){
-//        self.delegate?.chooseItem(name: detailName.text!, indx: secindex, tagBut: tagButton)
-//
-//    }
-    
     @IBAction func chooseButton(_ sender: UIButton) {
-//        print(detailName.text)
-//        print(secindex)
-        
         self.delegate?.chooseItem(name: detailName.text!, indx: secindex, tagBut: tagButton, selected: select)
     }
     

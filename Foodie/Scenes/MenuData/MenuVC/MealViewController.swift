@@ -36,15 +36,15 @@ class MealViewController: UIViewController {
         //        setSpecialData()
         //        setSpecialData1()
         //        setSpecialData2()
-        updateUI()
-
-       
-        
+      presenter.readData()
+      updateUI()
+     
        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        presenter.readData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//
+//    }
     
     func updateUI(){
         title = resturantRecevingName + " " + "MENU"
@@ -55,12 +55,16 @@ class MealViewController: UIViewController {
         tableView.backgroundView = UIImageView(image: UIImage(named: "menuBack2"))
     }
    
-    override func viewDidAppear(_ animated: Bool) {
+//    override func viewDidAppear(_ animated: Bool) {
+//        print("eslam")
+//
+//    }
+    func setdata(){
+         
          newImageArray = determineImageName()
          newMealNameArray = determineMealName()
          newMealPriceArray = determineMealPrice()
          tableView.reloadData()
-        
     }
     
     

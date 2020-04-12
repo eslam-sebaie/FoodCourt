@@ -38,6 +38,9 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = sb.instantiateViewController(withIdentifier: "ReciptVC") as! ReciptVC
+        detailVC.mealReceiveName = newMealNameArray[indexPath.row]
+        detailVC.mealReceivePrice = newMealPriceArray[indexPath.row]
+        detailVC.mealReceiveImage = newImageArray[indexPath.row]
         self.present(detailVC,animated: true)
        
     }

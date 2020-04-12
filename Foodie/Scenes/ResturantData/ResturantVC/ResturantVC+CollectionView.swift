@@ -30,6 +30,7 @@ extension ResturantVC: UICollectionViewDataSource, UICollectionViewDelegate {
              indx = indexPath
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! NameCollectionViewCell
             cell.isSelected = true
+            nameOfCheckCarsoul = newNameArr[indexPath.row]
             allPressChanged.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             allPressChanged.tintColor = UIColor.black
             checkCarousel = true

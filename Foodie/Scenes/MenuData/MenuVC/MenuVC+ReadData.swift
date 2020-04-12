@@ -10,8 +10,9 @@ import Foundation
 extension MealViewController: MenuView {
     func fetchData(menudata1: [menuData]) {
         self.menudata = menudata1
+        setdata()
         print("eslam sebaie  \(menudata)")
-        tableView.reloadData()
+//        tableView.reloadData()
     }
 
     

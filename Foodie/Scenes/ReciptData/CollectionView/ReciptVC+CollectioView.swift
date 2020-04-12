@@ -10,19 +10,17 @@ import Foundation
 extension ReciptVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-         return data.count
+        return newquestions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return data[section].subType.count
-        
+        return newAnswers[section].count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! dataCollectionViewCell
-       
         
-        cell.detailName.text = data[indexPath.section].subType[indexPath.item]
+        cell.detailName.text = newAnswers[indexPath.section][indexPath.item]
         cell.secindex = indexPath.section
         cell.tagButton = indexPath.row
         cell.select = indexPath
@@ -40,7 +38,7 @@ extension ReciptVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
              dataCollectionViewCell
 
         cell.isSelected = true
-        item = data[indexPath.section].subType[indexPath.row]
+        item = newAnswers[indexPath.section][indexPath.item]
         for i in 0...9 {
             if i == indexPath.section {
                 dataDic.append(element: item , toValueOfKey: String(indexPath.section))
@@ -56,7 +54,7 @@ extension ReciptVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
            case UICollectionView.elementKindSectionHeader:
            
                let headerview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath) as! sectionHeader
-           headerview.question = data[indexPath.section].headerName
+               headerview.question = questions[indexPath.section]
        
          
          headerview.backgroundColor = UIColor.clear

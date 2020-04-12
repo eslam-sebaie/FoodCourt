@@ -25,7 +25,9 @@ class ResturantVC: UIViewController , resturantView {
     
     var sendResturantName = ""
     var nameOfMall: String = ""
-   
+    var nameOfCheckCarsoul = ""
+    
+    
     var nameArr: [String] = []
     var newNameArr: [String] = []
     var imgArr: [String] = []

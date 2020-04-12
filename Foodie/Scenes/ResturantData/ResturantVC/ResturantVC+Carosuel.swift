@@ -70,8 +70,14 @@ extension ResturantVC: iCarouselDataSource, iCarouselDelegate {
         }
        
         func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
-            sendResturantName = newNameArr[index]
-            performSegue(withIdentifier: "goToMeals", sender: self)
+            if checkCarousel == false {
+                sendResturantName = newNameArr[index]
+                performSegue(withIdentifier: "goToMeals", sender: self)
+            }
+            else {
+                sendResturantName = nameOfCheckCarsoul
+                performSegue(withIdentifier: "goToMeals", sender: self)
+            }
         }
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let mealVC = segue.destination as! MealViewController

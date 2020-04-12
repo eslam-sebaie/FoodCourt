@@ -13,11 +13,11 @@ extension ReciptVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! DataTableViewCell
-        cell.mealName.text = "Chicken&Rice"
-        cell.mealDescription.text = "Pick 2 sandwiches from Big Mac (Beef/Burger)& McChicken +2 sandwiches from Beef Burger, Cheese Burger & Chickem McDo +2 regular fries + 1 litre Coke"
-        cell.mealPrice.text = "500 EGY"
-        cell.mealImage.image = UIImage(named: "mac4")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! DataTableViewCell
+        cell.mealName.text = mealReceiveName
+        cell.mealDescription.text = setDesc
+        cell.mealPrice.text = mealReceivePrice + " " + "EGY"
+        cell.mealImage.image = UIImage(named: mealReceiveImage)
         cell.mealImage.layer.cornerRadius = 8
         cell.mealImage.layer.masksToBounds = true
         cell.dataView.layer.cornerRadius = 12
