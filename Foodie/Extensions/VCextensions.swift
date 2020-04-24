@@ -8,14 +8,22 @@
 
 import Foundation
 extension UIViewController{
-    func alert() {
+    func alert(title: String) {
           
-          let alert = UIAlertController(title: "Enter Your Missing Data", message: "", preferredStyle: .alert)
+          let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
           let action = UIAlertAction(title: "OK", style: .default) { (action) in}
           alert.addAction(action)
           self.present(alert, animated: true, completion: nil)
           
       }
+//    func alertStepper() {
+//
+//        let alert = UIAlertController(title: "Add Data To Cart First ", message: "", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "OK", style: .default) { (action) in}
+//        alert.addAction(action)
+//        self.present(alert, animated: true, completion: nil)
+//
+//    }
     func instantiateSignInVC(){
     let sb = UIStoryboard(name: "Main", bundle: nil)
            let closeVC = sb.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC

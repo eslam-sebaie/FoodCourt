@@ -18,11 +18,10 @@ class ReciptVC: UIViewController {
     @IBOutlet weak var viewContainCollection: UIView!
     
     @IBOutlet weak var confirmDataButton: UIButton!
-//    var data = [dataModel(headerName: "Q1: TheSize", subType: ["small", "medium", "Large"], isExpandable: false),
-//                   dataModel(headerName: "Q2: Type", subType: ["Normal", "spices"], isExpandable: false),
-//                   dataModel(headerName: "Q3: How Much", subType: ["1 kilo", "2 kilo", "3 kilo", "4 kilo"], isExpandable: false)
-//
-//    ]
+    
+    @IBOutlet weak var amountLabel: UILabel!
+    
+    @IBOutlet weak var totalPriceLabel: UILabel!
     
     var item = ""
     var sectionNumber: Int!
@@ -50,13 +49,17 @@ class ReciptVC: UIViewController {
     var answers = [[String]]()
     var newAnswers = [[String]]()
     
-    
-    
-      
+    var dataPrice: [String:Int]!
+    var countPrice = 0
+    var amount = 0
+    var arr = [[String]]()
+     var newarr = [String]()
+     var newVal:Int!
+    var addCartCheck = false
     override func viewDidLoad() {
         super.viewDidLoad()
        //        setSpecialData1()
-       //        setSpecialData2()
+//               setSpecialData2()
        updateUI()
        readData()
     }
@@ -66,11 +69,11 @@ class ReciptVC: UIViewController {
          
         self.newquestions = self.determineQuestion()
         newAnswers = determineAnswer()
+        determinePrice()
         print("\(newAnswers) moooooo")
         determineHeight()
         collectionView.reloadData()
     }
-    
     func updateUI(){
           viewContainCollection.layer.cornerRadius = 50
           viewContainCollection.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -82,22 +85,53 @@ class ReciptVC: UIViewController {
 
     
     @IBAction func conform(_ sender: Any) {
-        var arr = [[String]]()
-        var newarr = [String]()
+      
+     
         
-        if dataDic.count == newquestions.count {
-           for (key,value) in dataDic {
-            arr.append(dataDic[key]!)
+    }
+    
+    @IBAction func amountStepper(_ sender: UIStepper) {
+        if addCartCheck == true {
+        print(newarr)
+        for choosenData in newarr {
+              for (key, value) in dataPrice {
+               
+               if choosenData == key {
+                   newVal = value as? Int
+                   countPrice += newVal
+               }
            }
-              print(arr)
-           for i in arr {
-            newarr.append(i.last!)
-           }
-           print(newarr)
-        }
+       }
+        amount = countPrice * Int(sender.value)
+
+        amountLabel.text = String(sender.value)
+        totalPriceLabel.text = "\(amount) Pound"
+        countPrice = 0
+    }
         else {
-            alert()
+            sender.value = 0.0
+              alert(title: "Add To Cart First")
         }
+    
+}
+    
+    @IBAction func addCart(_ sender: Any) {
+        
+        determinePrice()
+         if dataDic.count == newquestions.count {
+            for (key,value) in dataDic {
+             arr.append(dataDic[key]!)
+            }
+               print(arr)
+            for i in arr {
+             newarr.append(i.last!)
+                addCartCheck = true
+            }
+         }
+         else {
+             
+             alert(title: "Answer Above Questions")
+         }
     }
     
 }
@@ -122,7 +156,7 @@ class ReciptVC: UIViewController {
 
 
 
-//
+
 //    let FirstMeal: [String: Any] = [
 //        "MealName": "Chicken & Rice",
 //        "Description": "Pick 2 sandwiches from Big Mac (Beef/Burger)& McChicken +2 sandwiches from Beef Burger, Cheese Burger & Chickem McDo +2 regular fries + 1 litre Coke",
@@ -132,7 +166,17 @@ class ReciptVC: UIViewController {
 //                "answer1": ["Medium Compo", "Large Compo"],
 //                "answer2": ["French Fries", "Crispy Fries"],
 //                "answer3": ["Pepsi", "Mirinda", "7 Up"]
-//            ]
+//            ],
+//        "Prices" : [
+//            "Medium Compo" : 25 ,
+//            "Large Compo" : 45,
+//            "French Fries" : 10,
+//            "Crispy Fries" : 15,
+//            "Pepsi" : 7,
+//            "Mirinda" : 8,
+//            "7 Up" : 0
+//
+//        ]
 //    ]
 //    let secondMeal: [String: Any] = [
 //        "MealName": "BigMac",
@@ -143,7 +187,17 @@ class ReciptVC: UIViewController {
 //                "answer1": ["Medium", "Large"],
 //                "answer2": ["French Fries", "Crispy Fries"],
 //                "answer3": ["Pepsi", "Mirinda", "Coca"]
-//            ]
+//            ],
+//           "Prices" : [
+//            "Medium Compo" : 25 ,
+//            "Large Compo" : 45,
+//            "French Fries" : 10,
+//            "Crispy Fries" : 15,
+//            "Pepsi" : 7,
+//            "Mirinda" : 8,
+//            "7 Up" : 0
+//
+//        ]
 //    ]
 
 //

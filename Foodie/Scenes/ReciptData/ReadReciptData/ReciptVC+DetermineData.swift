@@ -40,6 +40,17 @@ extension ReciptVC {
           }
           return questions
     }
+    func determinePrice(){
+        for val in detailMeal {
+            if mealReceiveName == val.mealName {
+                dataPrice = val.price
+            }
+            else {
+                print("in else")
+             }
+    }
+}
+    
      func determineAnswer() -> [[String]]{
            for val in detailMeal {
              if mealReceiveName == val.mealName {

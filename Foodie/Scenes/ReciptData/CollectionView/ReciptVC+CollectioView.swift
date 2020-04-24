@@ -46,6 +46,26 @@ extension ReciptVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             }
         }
         
+        if #available(iOS 13.0, *) {
+            let popUpVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PopUpVC") as! PopUpVC
+            self.addChild(popUpVC)
+            popUpVC.view.frame = self.view.frame
+            self.view.addSubview(popUpVC.view)
+            popUpVC.view.layer.speed = 0.5
+            print("\(newAnswers[indexPath.section][indexPath.item]) eslam")
+            let name = newAnswers[indexPath.section][indexPath.item]
+            popUpVC.popUpMealName = name
+            popUpVC.popUpMealPrice = dataPrice[name]
+            popUpVC.setMealName()
+            popUpVC.setMealPrice()
+            popUpVC.didMove(toParent: self)
+        } else {
+            print("er")
+            
+        }
+        
+        
+        
     }
 
   

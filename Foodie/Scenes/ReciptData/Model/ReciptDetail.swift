@@ -12,4 +12,5 @@ struct ReciptDetail {
     var descrition:String!
     var question:[String]!
     var answers:[[String]] = [[String]]()
+    var price:[String:Int] = [String:Int]()
 }

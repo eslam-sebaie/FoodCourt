@@ -22,9 +22,10 @@ extension ReciptVC {
                           let name = results["MealName"] as? String
                           let desc = results["Description"] as? String
                           let ques = results["Questions"] as? [String]
+                          let prices = results["Prices"] as? [String: Int]
                           if let idData = results["answers"] as? [String: Any] {
                               self.getAnswer = idData
-                              for (key,value) in self.getAnswer {
+                            for (_,value) in self.getAnswer {
                                   
                                  answerValue = value as! [String]
                                   self.ans.append(answerValue)
@@ -33,7 +34,11 @@ extension ReciptVC {
                               print(self.ans)
                               
                           }
-                          newData = ReciptDetail(mealName: name, descrition: desc, question: ques, answers: self.ans)
+                          print(type(of: prices))
+                        
+                          print("the Prices is \(prices)")
+                      
+                        newData = ReciptDetail(mealName: name, descrition: desc, question: ques, answers: self.ans, price: prices!)
                           self.detail.append(newData)
                           self.ans = []
                           success(self.detail)

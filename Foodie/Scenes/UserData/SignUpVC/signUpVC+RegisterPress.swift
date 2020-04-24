@@ -27,7 +27,7 @@ extension SignUpVC {
                    }
                }
                else if !validate() {
-                   alert()
+                   alert(title: "Enter Your Missing Data")
                }
     }
 }
